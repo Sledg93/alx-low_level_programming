@@ -1,28 +1,30 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
- * print_number - main function
+ * rot13 - main function
  *
- * @n: Function parameter
+ * @s: String poiner
  *
- * Return: Always 0.
+ * Return: String function
  */
 
-void print_number(int n)
+char *rot13(char *s)
 {
-	unsigned int n1;
+	int k, r;
+	char data1[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char datarot[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	n1 = n;
-
-	if (n < 0)
+	for (k = 0; s[k] != '\0'; k++)
 	{
-	_putchar('-');
-	n1 = -n;
-	}
-
-	if (n1 / 10 != 0)
+	for (r = 0; r < 52; r++)
 	{
-	print_number(n1 / 10);
+	if (s[k] == data1[r])
+	{
+	s[k] = datarot[r];
+	break;
 	}
-	_putchar((n1 % 10) + '0');
+	}
+	}
+	return (s);
 }
